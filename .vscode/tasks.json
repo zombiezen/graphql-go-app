@@ -1,0 +1,85 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker build",
+      "type": "shell",
+      "command": "docker build -t graphql-go-app .",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "go build",
+      "type": "shell",
+      "command": "go build",
+      "group": "build",
+      "problemMatcher": [
+        "$go"
+      ]
+    },
+    {
+      "label": "Run",
+      "type": "shell",
+      "command": "./graphql-go-app -insecure-graphql",
+      "problemMatcher": [],
+      "isBackground": true,
+      "dependsOn": [
+        "go build",
+      ]
+    },
+    {
+      "label": "GraphQL Playground",
+      "type": "shell",
+      "command": "graphql playground",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "go test",
+        "npm test"
+      ]
+    },
+    {
+      "label": "go test",
+      "type": "shell",
+      "command": "go test ./...",
+      "group": "test",
+      "problemMatcher": [
+        "$go"
+      ]
+    },
+    {
+      "type": "npm",
+      "label": "npm build",
+      "script": "build",
+      "path": "client/",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "label": "npm watch",
+      "script": "watch",
+      "path": "client/",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "type": "npm",
+      "label": "npm test",
+      "script": "test",
+      "path": "client/",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

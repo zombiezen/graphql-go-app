@@ -1,0 +1,41 @@
+{
+  "name": "graphql-go-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
+    "apollo-boost": "^0.4.4",
+    "graphql": "^14.5.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  },
+  "devDependencies": {
+    "@apollo/react-testing": "^3.0.1",
+    "@testing-library/react": "^9.1.4",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/enzyme-to-json": "^1.5.3",
+    "@types/jest": "^24.0.17",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-test-renderer": "^16.8.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
+    "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "react:dev": "cp node_modules/react/umd/react.development.js dist/react.js && cp node_modules/react-dom/umd/react-dom.development.js dist/react-dom.js",
+    "react:prod": "cp node_modules/react/umd/react.production.min.js dist/react.js && cp node_modules/react-dom/umd/react-dom.production.min.js dist/react-dom.js",
+    "watch": "npm run react:dev && webpack --mode=development --watch",
+    "build": "npm run react:prod && webpack --mode=production",
+    "test": "jest"
+  }
+}

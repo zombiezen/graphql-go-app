@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": ["dom", "dom.iterable", "esnext", "scripthost"],
+    "jsx": "react",
+    "allowJs": true
+  }
+}
