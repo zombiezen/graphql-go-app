@@ -32,6 +32,7 @@ import (
 	"zombiezen.com/go/log"
 )
 
+// application is the root server object that serves both queries and mutations.
 type application struct {
 	server          *graphql.Server
 	insecureGraphQL bool
@@ -50,10 +51,12 @@ func newApplication(schemaPath string) (*application, error) {
 	return app, nil
 }
 
+// Greeting handles the Query.greeting field.
 func (app *application) Greeting(ctx context.Context) string {
 	return "Hello, World!"
 }
 
+// Mutate handles the Mutation.mutate field.
 func (app *application) Mutate(ctx context.Context, args map[string]graphql.Value) (graphql.NullString, error) {
 	message := args["message"].Scalar()
 	log.Infof(ctx, "Mutate message: %q", message)
