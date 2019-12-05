@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders a loading message 1`] = `
+<Component>
+  <main
+    className="App"
+  >
+    <p>
+      Loading…
+    </p>
+  </main>
+</Component>
+`;
+
+exports[`App renders the greeting when loaded 1`] = `
+<Component>
+  <main
+    className="App"
+  >
+    <p>
+      Hello, World!
+    </p>
+  </main>
+</Component>
+`;

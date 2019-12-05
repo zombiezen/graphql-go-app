@@ -29,7 +29,8 @@
     "source-map-loader": "^0.2.4",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "wait-for-expect": "^3.0.1"
   },
   "scripts": {
     "react:dev": "cp node_modules/react/umd/react.development.js dist/react.js && cp node_modules/react-dom/umd/react-dom.development.js dist/react-dom.js",
