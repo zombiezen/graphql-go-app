@@ -7,4 +7,4 @@ applications with Go and TypeScript.
 
 ## License
 
-[Apache 2.0][https://github.com/zombiezen/graphql-go-app/blob/master/LICENSE]
+[Apache 2.0](https://github.com/zombiezen/graphql-go-app/blob/master/LICENSE)
