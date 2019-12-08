@@ -45,6 +45,9 @@ Development:
 
 ## Getting Started
 
+Before getting started, you will need [Go][] 1.13 or later and [Node.js][] 12.
+You may optionally want to install [Docker][].
+
 1. Use the GitHub web interface to [generate a repository][] based on
    this template.
 2. Clone the repository to your local machine.
@@ -70,7 +73,10 @@ You can also try this template out in Heroku:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zombiezen/graphql-go-app)
 
+[Docker]: https://www.docker.com/get-started
 [generate a repository]: https://github.com/zombiezen/graphql-go-app/generate
+[Go]: https://golang.org/dl/
+[Node.js]: https://nodejs.org/en/download/
 
 ### Notable Files
 
