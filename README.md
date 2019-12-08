@@ -20,12 +20,11 @@ cd PROJECT
 ./set-project-name.sh github.com/MYNAME/PROJECT
 ```
 
-You can also try running this repository with [Google Cloud Run][]:
+You can also try this template out in Heroku:
 
-[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zombiezen/graphql-go-app)
 
 [generate a repository]: https://github.com/zombiezen/graphql-go-app/generate
-[Google Cloud Run]: https://cloud.google.com/run
 
 ## Features
 
