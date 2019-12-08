@@ -15,12 +15,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { MockedProvider, MockedResponse } from '@apollo/react-testing';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import waitForExpect from 'wait-for-expect';
 
 import { App, QUERY } from './App';
+import { MemoryRouter } from 'react-router';
 
 describe('App', () => {
   const mocks: MockedResponse[] = [
@@ -37,7 +38,9 @@ describe('App', () => {
   ];
   const Wrapper: React.FC<{children?: any}> = ({children}) => (
     <MockedProvider mocks={mocks} addTypename={false}>
-      {children}
+      <MemoryRouter initialEntries={[ { pathname: '/', key: 'xyzzy' } ]}>
+        {children}
+      </MemoryRouter>
     </MockedProvider>
   );
 
