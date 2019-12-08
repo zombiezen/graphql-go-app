@@ -17,6 +17,7 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import * as React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 
 export const QUERY = gql`
 query AppQuery {
@@ -32,9 +33,20 @@ export const App: React.FC<{}> = (_props) => {
   const {data} = useQuery<QueryData>(QUERY);
   return (
     <main className="App">
-      {data ?
-        <p>{data.greeting}</p> :
-        <p>Loading&hellip;</p>}
+      <Switch>
+        <Route path="/" exact>
+          <h1 className="App-heading">GraphQL Go App</h1>
+          {data ?
+            <p className="App-greeting">{data.greeting} (from GraphQL)</p> :
+            <p className="App-loading">Loading&hellip;</p>}
+
+          <p>Try the <a href="/client/playground.html">GraphQL playground</a>!</p>
+        </Route>
+        <Route path="*">
+          <h1 className="App-heading">Not Found</h1>
+          <p>Try heading back <Link to="/">home</Link>?</p>
+        </Route>
+      </Switch>
     </main>
   );
 }

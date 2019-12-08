@@ -20,6 +20,7 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { App } from "./components/App";
 
@@ -31,6 +32,8 @@ const defaultClient = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={defaultClient}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root'));

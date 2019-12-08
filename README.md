@@ -37,7 +37,7 @@ Go server:
 
 TypeScript client:
 
--  Preconfigured [Apollo Client][]
+-  Preconfigured [React Router][] and [Apollo Client][]
 -  [GraphQL Playground][] available by visiting `/client/playground.html`
 -  Unit test harness using [Jest][] and [Enzyme][]
 
@@ -53,6 +53,7 @@ Development:
 [GitHub Actions]: https://github.com/features/actions
 [GraphQL Playground]: https://github.com/prisma-labs/graphql-playground
 [Jest]: https://jestjs.io/
+[React Router]: https://reacttraining.com/react-router/web/
 
 ## License
 

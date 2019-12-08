@@ -16,12 +16,30 @@ limitations under the License.
 SPDX-License-Identifier: Apache-2.0
 */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
 html {
-  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
   margin: 0;
   padding: 0;
 }
 body {
+  background: #ffffff;
+  background: fixed linear-gradient(to bottom, #ffffff 70%, #ff7bd4 100%);
   margin: 0;
-  padding: 0;
+  padding: 0 0.3rem;
+}
+.App {
+  background: #f8cdea;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  margin: 3rem auto 1rem;
+  max-width: 20rem;
+  padding: 0.25rem 1rem;
+}
+.App-heading {
+  margin: 0.25rem 0 0.5rem;
 }
