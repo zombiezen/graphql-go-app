@@ -1,0 +1,12 @@
+{
+  "name": "graphql-go-app",
+  "stack": "container",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [],
+  "env": {}
+}
