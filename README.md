@@ -47,6 +47,7 @@ Development:
    container-based environment like Kubernetes
 -  Provided Heroku configuration for simple deployment
 -  Continuous Integration (CI) via [GitHub Actions][]
+-  [Tasks][VSCode Tasks] and editor settings for Visual Studio Code
 
 [Dockerfile]: https://github.com/zombiezen/graphql-go-app/blob/master/Dockerfile
 [Enzyme]: https://airbnb.io/enzyme/
@@ -54,6 +55,7 @@ Development:
 [GraphQL Playground]: https://github.com/prisma-labs/graphql-playground
 [Jest]: https://jestjs.io/
 [React Router]: https://reacttraining.com/react-router/web/
+[VSCode Tasks]: https://code.visualstudio.com/docs/editor/tasks
 
 ## License
 
