@@ -27,7 +27,7 @@ import (
 )
 
 func TestGreeting(t *testing.T) {
-	app, err := newApplication("schema.graphql")
+	app, err := newApplication("schema.graphql", "client")
 	if err != nil {
 		t.Fatal(err)
 	}

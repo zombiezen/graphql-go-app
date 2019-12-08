@@ -17,12 +17,17 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"crypto/sha256"
 	"flag"
+	"fmt"
+	"html/template"
 	"net/http"
 	"os"
 	"os/signal"
 	"path/filepath"
+	"time"
 
 	"gocloud.dev/server"
 	"gocloud.dev/server/requestlog"
@@ -35,15 +40,18 @@ import (
 // application is the root server object that serves both queries and mutations.
 type application struct {
 	server          *graphql.Server
+	entrypointPath  string
 	insecureGraphQL bool
 }
 
-func newApplication(schemaPath string) (*application, error) {
+func newApplication(schemaPath, entrypointPath string) (*application, error) {
 	schema, err := graphql.ParseSchemaFile(schemaPath, nil)
 	if err != nil {
 		return nil, err
 	}
-	app := new(application)
+	app := &application{
+		entrypointPath: entrypointPath,
+	}
 	app.server, err = graphql.NewServer(schema, app, app)
 	if err != nil {
 		return nil, err
@@ -74,17 +82,49 @@ func (app *application) handleGraphQL(w http.ResponseWriter, r *http.Request) {
 	graphqlhttp.NewHandler(app.server).ServeHTTP(w, r)
 }
 
-type fileHandler string
+// handleEntrypoint serves the single HTML page entrypoint to the application.
+// It's rendered using "html/template" so the server can send configuration to
+// the client.
+func (app *application) handleEntrypoint(w http.ResponseWriter, r *http.Request) {
+	// Handle non-GET/HEAD requests.
+	if r.Method != http.MethodGet && r.Method != http.MethodHead && r.Method != http.MethodOptions {
+		w.Header().Set("Allow", "GET, HEAD, OPTIONS")
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusNoContent)
+		return
+	}
 
-func (fh fileHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, string(fh))
+	// Render entrypoint to buffer.
+	ctx := r.Context()
+	tmpl, err := template.ParseFiles(app.entrypointPath)
+	if err != nil {
+		log.Errorf(ctx, "Can't parse HTML template: %v", err)
+		http.Error(w, "can't parse entrypoint", http.StatusInternalServerError)
+		return
+	}
+	buf := new(bytes.Buffer)
+	if err := tmpl.Execute(buf, struct{}{}); err != nil {
+		log.Errorf(ctx, "Can't render HTML template: %v", err)
+		http.Error(w, "can't render entrypoint", http.StatusInternalServerError)
+		return
+	}
+
+	// Serve entrypoint HTML.
+	// Make sure to set the Vary header if needed.
+	sum := sha256.Sum256(buf.Bytes())
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("ETag", fmt.Sprintf("\"%x\"", sum[:]))
+	http.ServeContent(w, r, "index.html", time.Time{}, bytes.NewReader(buf.Bytes()))
 }
 
 func newRouter(app *application, clientDir string) *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/graphql", http.HandlerFunc(app.handleGraphQL))
 	mux.Handle("/client/", http.StripPrefix("/client/", http.FileServer(http.Dir(clientDir))))
-	mux.Handle("/", fileHandler(filepath.Join(clientDir, "index.html")))
+	mux.HandleFunc("/", app.handleEntrypoint)
 	return mux
 }
 
@@ -104,7 +144,7 @@ func main() {
 	})
 
 	ctx := context.Background()
-	app, err := newApplication(*schemaPath)
+	app, err := newApplication(*schemaPath, filepath.Join(*clientPath, "index.html"))
 	if err != nil {
 		log.Errorf(ctx, "Read schema: %v", err)
 	}
