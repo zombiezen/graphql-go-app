@@ -39,13 +39,15 @@ import (
 
 // application is the root server object that serves both queries and mutations.
 type application struct {
-	server          *graphql.Server
-	entrypointPath  string
-	insecureGraphQL bool
+	server         *graphql.Server
+	entrypointPath string
 }
 
 func newApplication(schemaPath, entrypointPath string) (*application, error) {
-	schema, err := graphql.ParseSchemaFile(schemaPath, nil)
+	schema, err := graphql.ParseSchemaFile(schemaPath, &graphql.SchemaOptions{
+		// Set this to true to prevent serving documentation in production.
+		IgnoreDescriptions: false,
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -71,12 +73,8 @@ func (app *application) Mutate(ctx context.Context, args map[string]graphql.Valu
 	return graphql.NullString{}, nil
 }
 
+// handleGraphQL processes GraphQL requests.
 func (app *application) handleGraphQL(w http.ResponseWriter, r *http.Request) {
-	if app.insecureGraphQL {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, HEAD, POST, OPTIONS")
-	}
 	r.Body = http.MaxBytesReader(w, r.Body, 1<<20 /* 1 MiB */)
 	defer r.Body.Close()
 	graphqlhttp.NewHandler(app.server).ServeHTTP(w, r)
@@ -135,7 +133,6 @@ func main() {
 	}
 	clientPath := flag.String("client", "client/dist", "path to client-side resources")
 	schemaPath := flag.String("schema", "schema.graphql", "path to GraphQL schema")
-	insecureGraphQL := flag.Bool("insecure-graphql", false, "enable GraphQL requests from any origin")
 	flag.Parse()
 	log.SetDefault(&logWriter{
 		prefix: "graphql-go-app: ",
@@ -148,7 +145,6 @@ func main() {
 	if err != nil {
 		log.Errorf(ctx, "Read schema: %v", err)
 	}
-	app.insecureGraphQL = *insecureGraphQL
 	router := newRouter(app, *clientPath)
 	srv := server.New(router, &server.Options{
 		RequestLogger: requestlog.NewNCSALogger(os.Stdout, nil),
