@@ -22,7 +22,7 @@
     {
       "label": "Run",
       "type": "shell",
-      "command": "./graphql-go-app -insecure-graphql",
+      "command": "./graphql-go-app",
       "problemMatcher": [],
       "isBackground": true,
       "dependsOn": [
