@@ -2,13 +2,19 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": ["dom", "dom.iterable", "esnext", "scripthost"],
     "jsx": "react",
-    "allowJs": true
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true
   }
 }

@@ -26,6 +26,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
+    "gts": "^1.1.2",
     "jest": "^24.8.0",
     "react-test-renderer": "^16.8.6",
     "serialize-javascript": "^2.1.1",
@@ -40,6 +41,10 @@
     "react:prod": "cp node_modules/react/umd/react.production.min.js dist/react.js && cp node_modules/react-dom/umd/react-dom.production.min.js dist/react-dom.js",
     "watch": "npm run react:dev && webpack --mode=development --watch",
     "build": "npm run react:prod && webpack --mode=production",
-    "test": "jest"
+    "test": "jest",
+    "check": "gts check",
+    "clean": "gts clean",
+    "fix": "gts fix",
+    "posttest": "npm run check"
   }
 }

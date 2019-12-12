@@ -36,9 +36,10 @@ describe('App', () => {
       },
     },
   ];
-  const Wrapper: React.FC<{children?: any}> = ({children}) => (
+  // tslint:disable-next-line: no-any
+  const Wrapper: React.FC<{ children?: any }> = ({ children }) => (
     <MockedProvider mocks={mocks} addTypename={false}>
-      <MemoryRouter initialEntries={[ { pathname: '/', key: 'xyzzy' } ]}>
+      <MemoryRouter initialEntries={[{ pathname: '/', key: 'xyzzy' }]}>
         {children}
       </MemoryRouter>
     </MockedProvider>
@@ -58,7 +59,8 @@ describe('App', () => {
       await waitForExpect(() => {
         component.update();
         expect(component.text()).toEqual(
-          expect.stringContaining('Hello, World!'));
+          expect.stringContaining('Hello, World!')
+        );
       });
     });
     expect(component).toMatchSnapshot();

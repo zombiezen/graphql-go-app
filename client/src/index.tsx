@@ -22,12 +22,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { App } from "./components/App";
+import { App } from './components/App';
 
 const defaultClient = new ApolloClient({
   name: 'graphql-go-app',
   cache: new InMemoryCache(),
-  link: new HttpLink({uri: '/graphql'}),
+  link: new HttpLink({ uri: '/graphql' }),
 });
 
 ReactDOM.render(
@@ -36,4 +36,5 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </ApolloProvider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
