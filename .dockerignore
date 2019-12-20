@@ -23,5 +23,8 @@
 /client/dist/react-dom.js
 /client/node_modules/
 
-# GraphQL
+# Development files
+.env
 .graphqlconfig
+/README.md
+/runenv.sh

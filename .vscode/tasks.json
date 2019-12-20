@@ -22,19 +22,12 @@
     {
       "label": "Run",
       "type": "shell",
-      "command": "./graphql-go-app",
+      "command": "./runenv.sh .env ./graphql-go-app > /dev/null",
       "problemMatcher": [],
       "isBackground": true,
       "dependsOn": [
         "go build",
       ]
-    },
-    {
-      "label": "GraphQL Playground",
-      "type": "shell",
-      "command": "graphql playground",
-      "problemMatcher": [],
-      "isBackground": true
     },
     {
       "label": "Test",

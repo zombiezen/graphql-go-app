@@ -18,3 +18,6 @@
 /client/dist/react.js
 /client/dist/react-dom.js
 /client/node_modules/
+
+# Development files
+.env
