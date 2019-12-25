@@ -66,10 +66,14 @@ func (app *application) Greeting(ctx context.Context) string {
 	return "Hello, World!"
 }
 
+// MutateArgs is the set of arguments for the Mutation.mutate field.
+type MutateArgs struct {
+	Message string
+}
+
 // Mutate handles the Mutation.mutate field.
-func (app *application) Mutate(ctx context.Context, args map[string]graphql.Value) (graphql.NullString, error) {
-	message := args["message"].Scalar()
-	log.Infof(ctx, "Mutate message: %q", message)
+func (app *application) Mutate(ctx context.Context, args *MutateArgs) (graphql.NullString, error) {
+	log.Infof(ctx, "Mutate message: %q", args.Message)
 	return graphql.NullString{}, nil
 }
 
