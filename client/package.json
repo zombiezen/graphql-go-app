@@ -33,7 +33,7 @@
     "source-map-loader": "^0.2.4",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3",
+    "typescript": "^3.7.4",
     "wait-for-expect": "^3.0.1"
   },
   "scripts": {
