@@ -147,7 +147,7 @@ func main() {
 	ctx := context.Background()
 	app, err := newApplication(*schemaPath, filepath.Join(*clientPath, "index.html"))
 	if err != nil {
-		log.Errorf(ctx, "Read schema: %v", err)
+		log.Errorf(ctx, "Initialize: %v", err)
 	}
 	router := newRouter(app, *clientPath)
 	srv := server.New(router, &server.Options{
