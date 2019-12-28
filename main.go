@@ -148,6 +148,7 @@ func main() {
 	app, err := newApplication(*schemaPath, filepath.Join(*clientPath, "index.html"))
 	if err != nil {
 		log.Errorf(ctx, "Initialize: %v", err)
+		os.Exit(1)
 	}
 	router := newRouter(app, *clientPath)
 	srv := server.New(router, &server.Options{
