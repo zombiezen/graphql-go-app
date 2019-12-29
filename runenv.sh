@@ -35,4 +35,4 @@ while read -r var; do
 done < <(grep -v '^#\|^\s*$' "$env_path")
 
 # Run program with given environment variables.
-exec env - "${vars[@]}" "$@"
+exec env -- "${vars[@]}" "$@"
