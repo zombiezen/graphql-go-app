@@ -135,7 +135,7 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	clientPath := flag.String("client", "client/dist", "path to client-side resources")
+	clientPath := flag.String("client", filepath.Join("client", "dist"), "path to client-side resources")
 	schemaPath := flag.String("schema", "schema.graphql", "path to GraphQL schema")
 	flag.Parse()
 	log.SetDefault(&logWriter{
