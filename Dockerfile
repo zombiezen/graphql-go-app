@@ -31,7 +31,7 @@ COPY client /src
 WORKDIR /src
 RUN npm install && npm run build
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian10
 COPY --from=build /src/graphql-go-app /graphql-go-app
 COPY --from=build /src/schema.graphql /schema.graphql
 COPY --from=clientbuild /src/dist /client
