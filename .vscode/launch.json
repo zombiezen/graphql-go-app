@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest All",
+      "program": "${workspaceFolder}/client/node_modules/.bin/jest",
+      "args": [
+        "--runInBand",
+        "--config",
+        "client/jest.config.js"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/client/node_modules/jest/bin/jest",
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/client/node_modules/.bin/jest",
+      "args": [
+        "--runInBand",
+        "${fileBasenameNoExtension}",
+        "--config",
+        "client/jest.config.js"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/client/node_modules/jest/bin/jest",
+      }
+    }
+  ]
+}
