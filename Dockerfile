@@ -27,14 +27,22 @@ COPY . /src
 RUN go build
 
 FROM node:12.13-slim AS clientbuild
-COPY client /src
+# Install dependencies.
+# Only copy in package.json and package-lock.json to increase Docker
+# cache hit rate.
+COPY client/package.json client/package-lock.json /src/
 WORKDIR /src
-RUN npm install && npm run build
+RUN npm install
+# Now build the whole tree.
+COPY client /src
+RUN npm run build
+RUN mv /src/dist/main.js.map /src/
 
 FROM gcr.io/distroless/base-debian10
 COPY --from=build /src/graphql-go-app /graphql-go-app
 COPY --from=build /src/schema.graphql /schema.graphql
 COPY --from=clientbuild /src/dist /client
+COPY --from=clientbuild /src/main.js.map /main.js.map
 ENV PORT 8080
 EXPOSE 8080
 ENTRYPOINT ["/graphql-go-app", "-client=/client", "-schema=/schema.graphql"]
