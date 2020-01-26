@@ -20,7 +20,8 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import waitForExpect from 'wait-for-expect';
 
-import { App, QUERY } from './App';
+import { App } from './App';
+import QUERY from './AppQuery.graphql';
 import { TestWrapper } from './TestWrapper';
 
 describe('App', () => {

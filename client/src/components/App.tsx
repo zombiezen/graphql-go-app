@@ -15,15 +15,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
-export const QUERY = gql`
-  query AppQuery {
-    greeting
-  }
-`;
+import QUERY from './AppQuery.graphql';
 
 interface QueryData {
   greeting: string;

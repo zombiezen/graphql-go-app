@@ -27,6 +27,11 @@ module.exports = {
         use: 'ts-loader'
       },
       {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      },
+      {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader'
