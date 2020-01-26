@@ -14,14 +14,14 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { MockedProvider, MockedResponse } from '@apollo/react-testing';
+import { MockedResponse } from '@apollo/react-testing';
 import { mount } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { MemoryRouter } from 'react-router';
 import waitForExpect from 'wait-for-expect';
 
 import { App, QUERY } from './App';
+import { TestWrapper } from './TestWrapper';
 
 describe('App', () => {
   const mocks: MockedResponse[] = [
@@ -36,24 +36,18 @@ describe('App', () => {
       },
     },
   ];
-  // tslint:disable-next-line: no-any
-  const Wrapper: React.FC<{ children?: any }> = ({ children }) => (
-    <MockedProvider mocks={mocks} addTypename={false}>
-      <MemoryRouter initialEntries={[{ pathname: '/', key: 'xyzzy' }]}>
-        {children}
-      </MemoryRouter>
-    </MockedProvider>
-  );
 
   it('renders a loading message', () => {
     const component = mount(<App />, {
-      wrappingComponent: Wrapper,
+      wrappingComponent: TestWrapper,
+      wrappingComponentProps: { mocks },
     });
     expect(component).toMatchSnapshot();
   });
   it('renders the greeting when loaded', async () => {
     const component = mount(<App />, {
-      wrappingComponent: Wrapper,
+      wrappingComponent: TestWrapper,
+      wrappingComponentProps: { mocks },
     });
     await act(async () => {
       await waitForExpect(() => {
