@@ -18,10 +18,10 @@ import { MockedProvider, MockedResponse } from '@apollo/react-testing';
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
+import { MemoryRouter } from 'react-router';
 import waitForExpect from 'wait-for-expect';
 
 import { App, QUERY } from './App';
-import { MemoryRouter } from 'react-router';
 
 describe('App', () => {
   const mocks: MockedResponse[] = [

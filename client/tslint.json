@@ -6,6 +6,24 @@
     ]
   },
   "rules": {
+    "ordered-imports": {
+      "options": {
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "third-party",
+            "match": "^[^.]",
+            "order": 10
+          },
+          {
+            "name": "first-party",
+            "match": "^.",
+            "order": 20
+          }
+        ],
+        "module-source-path": "basename"
+      }
+    },
     "variable-name": {
       "options": [
         "allow-pascal-case",

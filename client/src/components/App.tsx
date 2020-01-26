@@ -14,8 +14,8 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 import * as React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
