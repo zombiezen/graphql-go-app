@@ -25,6 +25,8 @@ TypeScript client:
 -  Preconfigured [React Router][] and [Apollo Client][]
 -  [GraphQL Playground][] available by visiting `/client/playground.html`
 -  Unit test harness using [Jest][] and [Enzyme][]
+-  Webpack configuration ready for [code splitting][] and
+   [build-time GraphQL parsing][]
 
 Development:
 
@@ -34,6 +36,8 @@ Development:
 -  Continuous Integration (CI) via [GitHub Actions][]
 -  [Tasks][VSCode Tasks] and editor settings for Visual Studio Code
 
+[build-time GraphQL parsing]: https://www.apollographql.com/docs/react/integrations/webpack/
+[code splitting]: https://reactjs.org/docs/code-splitting.html
 [Dockerfile]: https://github.com/zombiezen/graphql-go-app/blob/master/Dockerfile
 [Enzyme]: https://airbnb.io/enzyme/
 [GitHub Actions]: https://github.com/features/actions

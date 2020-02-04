@@ -13,8 +13,8 @@
 *.out
 
 # Javascript
-/client/dist/main.js
-/client/dist/main.js.map
+/client/dist/main*.js
+/client/dist/main*.js.map
 /client/dist/react.js
 /client/dist/react-dom.js
 /client/node_modules/
