@@ -15,6 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 module.exports = {
+  "moduleNameMapper": {
+    "\\.css$": "identity-obj-proxy",
+  },
   "roots": [
     "<rootDir>/src"
   ],

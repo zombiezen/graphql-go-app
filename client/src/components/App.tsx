@@ -18,6 +18,7 @@ import { useQuery } from '@apollo/react-hooks';
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
+import './App.css';
 import QUERY from './AppQuery.graphql';
 
 interface QueryData {
