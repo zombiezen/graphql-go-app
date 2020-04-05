@@ -25,6 +25,7 @@ Go server:
 TypeScript client:
 
 -  Preconfigured [React Router][] and [Apollo Client][]
+-  Automatically generated types for GraphQL queries
 -  [GraphQL Playground][] available by visiting `/client/playground.html`
 -  Unit test harness using [Jest][] and [Enzyme][]
 -  Webpack configuration ready for [code splitting][] and
