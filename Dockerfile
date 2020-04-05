@@ -39,10 +39,10 @@ RUN npm run build
 RUN mv /src/dist/main.js.map /src/
 
 FROM gcr.io/distroless/base-debian10
-COPY --from=build /src/graphql-go-app /graphql-go-app
+COPY --from=build /src/<APPLICATION_NAME> /<APPLICATION_NAME>
 COPY --from=build /src/schema.graphql /schema.graphql
 COPY --from=clientbuild /src/dist /client
 COPY --from=clientbuild /src/main.js.map /main.js.map
 ENV PORT 8080
 EXPOSE 8080
-ENTRYPOINT ["/graphql-go-app", "-client=/client", "-schema=/schema.graphql"]
+ENTRYPOINT ["/<APPLICATION_NAME>", "-client=/client", "-schema=/schema.graphql"]

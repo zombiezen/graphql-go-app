@@ -25,6 +25,10 @@ jobs:
         go-version: "1.13"
     - name: Check out code
       uses: actions/checkout@v1
+    # BEGIN TEMPLATE-ONLY
+    - name: go-starter
+      run: curl -fsSL https://github.com/adobe/go-starter/releases/latest/download/go-starter-linux-amd64.tgz | sudo tar -C /usr/local/bin -zxf - && go-starter -skip-clone -var application_name=graphql-go-app -var import_path=zombiezen.com/go/graphql-go-app zombiezen/graphql-go-app .
+    # END TEMPLATE-ONLY
     - name: Download dependencies
       run: go mod download
       env:
@@ -43,6 +47,10 @@ jobs:
         node-version: "10.x"
     - name: Check out code
       uses: actions/checkout@v1
+    # BEGIN TEMPLATE-ONLY
+    - name: go-starter
+      run: curl -fsSL https://github.com/adobe/go-starter/releases/latest/download/go-starter-linux-amd64.tgz | sudo tar -C /usr/local/bin -zxf - && go-starter -skip-clone -var application_name=graphql-go-app -var import_path=zombiezen.com/go/graphql-go-app zombiezen/graphql-go-app .
+    # END TEMPLATE-ONLY
     - name: Download dependencies
       run: npm install
       working-directory: ./client

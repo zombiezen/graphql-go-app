@@ -10,7 +10,7 @@
 *.dylib
 
 # Binaries
-/graphql-go-app
+/<APPLICATION_NAME>
 *.test
 
 # Output of the go coverage tool

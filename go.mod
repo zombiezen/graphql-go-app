@@ -1,4 +1,4 @@
-module zombiezen.com/go/graphql-go-app
+module <IMPORT_PATH>
 
 go 1.13
 

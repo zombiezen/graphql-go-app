@@ -1,5 +1,4 @@
-#!/bin/bash
-# Copyright 2019 Ross Light
+# Copyright 2020 Ross Light
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,19 +14,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-set -e
+questions:
+  - message: "Application Name"
+    name: "application_name"
+    type: input
+    regexp: "^[-_a-zA-Z0-9]+$"
+    help_msg: Machine-readable, same as the name of your binary.
+  - message: "Go import path"
+    name: "import_path"
+    type: input
 
-if [[ $# -ne 1 || "$1" == '--help' ]]; then
-  echo "usage: $(basename "$0") IMPORTPATH"
-  exit 64
-fi
-IMPORTPATH="$1"
-NAME="$(basename "$1")"
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-cd "$DIR"
-find . -type f | grep -v '/\.[^/]\|/node_modules/\|set-project-name.sh\|README.md' | \
-  xargs sed -i -e "s:zombiezen.com/go/graphql-go-app:$IMPORTPATH:g" -e "s/graphql-go-app/$NAME/g" \
-    .dockerignore \
-    .gitignore \
-    .graphqlconfig
+tasks:
+  - command: ["go-starter-replace"]
+  - command: ["sed", "-e", "/BEGIN TEMPLATE-ONLY/,/END TEMPLATE-ONLY/d", ".github/workflows/build.yml"]
+  - command: ["rm", ".starter.yml"]

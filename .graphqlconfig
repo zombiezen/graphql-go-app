@@ -1,6 +1,6 @@
 {
   "projects": {
-    "graphql-go-app": {
+    "<APPLICATION_NAME>": {
       "schemaPath": "schema.graphql",
       "extensions": {
         "endpoints": {

@@ -6,7 +6,7 @@
     {
       "label": "docker build",
       "type": "shell",
-      "command": "docker build -t graphql-go-app .",
+      "command": "docker build -t <APPLICATION_NAME> .",
       "group": "build",
       "problemMatcher": []
     },
@@ -22,7 +22,7 @@
     {
       "label": "Run",
       "type": "shell",
-      "command": "./runenv.sh .env ./graphql-go-app > /dev/null",
+      "command": "./runenv.sh .env ./<APPLICATION_NAME> > /dev/null",
       "problemMatcher": [],
       "isBackground": true,
       "dependsOn": [

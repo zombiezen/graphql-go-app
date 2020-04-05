@@ -49,18 +49,14 @@ Development:
 
 ## Getting Started
 
-Before getting started, you will need [Go][] 1.13 or later and [Node.js][] 12.
-You may optionally want to install [Docker][].
+Before getting started, you will need [Go][] 1.13 or later, [Node.js][] 12, and
+Adobe's [go-starter][] tool. You may optionally want to install [Docker][].
 
-1. Use the GitHub web interface to [generate a repository][] based on
-   this template.
-2. Clone the repository to your local machine.
-3. Use the `set-project-name.sh` script to use your project name.
+Use the `go-starter` tool to create your repository.
 
 ```shell
-git clone https://github.com/MYNAME/PROJECT.git
+go-starter zombiezen/graphql-go-app PROJECT
 cd PROJECT
-./set-project-name.sh github.com/MYNAME/PROJECT
 ```
 
 To run the app locally:
@@ -70,16 +66,13 @@ To run the app locally:
 cd client && npm install && npm run watch
 
 # In another terminal:
-go build && ./graphql-go-app
+go build && ./<APPLICATION_NAME>
 ```
-
-You can also try this template out in Heroku:
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zombiezen/graphql-go-app)
 
 [Docker]: https://www.docker.com/get-started
 [generate a repository]: https://github.com/zombiezen/graphql-go-app/generate
 [Go]: https://golang.org/dl/
+[go-starter]: https://github.com/adobe/go-starter
 [Node.js]: https://nodejs.org/en/download/
 
 ### Notable Files

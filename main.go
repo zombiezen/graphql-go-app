@@ -139,7 +139,7 @@ func main() {
 	schemaPath := flag.String("schema", "schema.graphql", "path to GraphQL schema")
 	flag.Parse()
 	log.SetDefault(&logWriter{
-		prefix: "graphql-go-app: ",
+		prefix: "<APPLICATION_NAME>: ",
 		flag:   log.StdFlags,
 		out:    os.Stderr,
 	})

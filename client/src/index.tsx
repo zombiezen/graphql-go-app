@@ -25,7 +25,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './components/App';
 
 const defaultClient = new ApolloClient({
-  name: 'graphql-go-app',
+  name: '<APPLICATION_NAME>',
   cache: new InMemoryCache(),
   link: new HttpLink({ uri: '/graphql' }),
 });

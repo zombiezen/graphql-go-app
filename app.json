@@ -1,5 +1,5 @@
 {
-  "name": "graphql-go-app",
+  "name": "<APPLICATION_NAME>",
   "stack": "container",
   "formation": {
     "web": {
