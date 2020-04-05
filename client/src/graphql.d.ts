@@ -1,15 +1,9 @@
-// Type declarations for GraphQL files.
 
-declare module '*.gql' {
+declare module '*/AppQuery.graphql' {
   import { DocumentNode } from 'graphql';
-  const Schema: DocumentNode;
+  const defaultDocument: DocumentNode;
+  export const AppQuery: DocumentNode;
 
-  export = Schema;
+  export default defaultDocument;
 }
-
-declare module '*.graphql' {
-  import { DocumentNode } from 'graphql';
-  const Schema: DocumentNode;
-
-  export = Schema;
-}
+    

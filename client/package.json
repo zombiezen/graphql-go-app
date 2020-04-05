@@ -17,6 +17,12 @@
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.0.1",
+    "@graphql-codegen/cli": "^1.12.1",
+    "@graphql-codegen/fragment-matcher": "1.12.1",
+    "@graphql-codegen/introspection": "1.12.1",
+    "@graphql-codegen/typescript": "1.12.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "1.12.1",
+    "@graphql-codegen/typescript-operations": "1.12.1",
     "@testing-library/react": "^9.1.4",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -29,8 +35,8 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
-    "identity-obj-proxy": "^3.0.0",
     "gts": "^1.1.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jest-transform-graphql": "^2.1.0",
     "react-test-renderer": "^16.8.6",
@@ -50,6 +56,7 @@
     "check": "gts check",
     "clean": "gts clean",
     "fix": "gts fix",
-    "posttest": "npm run check"
+    "posttest": "npm run check",
+    "graphql-codegen": "graphql-codegen --config graphql-codegen.yml && gts fix src/generated/*"
   }
 }

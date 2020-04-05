@@ -2,6 +2,8 @@
   "extends": "gts/tslint.json",
   "linterOptions": {
     "exclude": [
+      "src/generated/*",
+      "src/graphql.d.ts",
       "**/*.json"
     ]
   },

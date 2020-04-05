@@ -21,19 +21,21 @@ import { act } from 'react-dom/test-utils';
 import waitForExpect from 'wait-for-expect';
 
 import { App } from './App';
-import QUERY from './AppQuery.graphql';
+import { AppQuery } from './AppQuery.graphql';
+import { AppQueryData, AppQueryVariables } from '../generated/graphql';
 import { TestWrapper } from './TestWrapper';
 
 describe('App', () => {
   const mocks: MockedResponse[] = [
     {
       request: {
-        query: QUERY,
+        query: AppQuery,
+        variables: {} as AppQueryVariables,
       },
       result: {
         data: {
           greeting: 'Hello, World!',
-        },
+        } as AppQueryData,
       },
     },
   ];

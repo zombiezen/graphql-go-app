@@ -80,7 +80,9 @@ go build && ./<APPLICATION_NAME>
 Once you've got your environment set up, these are the files you will most
 likely want to edit next:
 
--  [schema.graphql][]: Service definition written in the [GraphQL schema language][]
+-  [schema.graphql][]: Service definition written in the [GraphQL schema language][].
+   If you make changes, run `npm run graphql-codegen` from the `client`
+   directory to update the TypeScript type definitions.
 -  [main.go][]: Server code. Can be broken up into multiple Go files, like with
    any Go package.
 -  [main_test.go][]: Server test code

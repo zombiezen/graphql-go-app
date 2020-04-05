@@ -26,7 +26,7 @@
       "problemMatcher": [],
       "isBackground": true,
       "dependsOn": [
-        "go build",
+        "go build"
       ]
     },
     {
@@ -72,6 +72,12 @@
       "script": "test",
       "path": "client/",
       "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "graphql-codegen",
+      "path": "client/",
       "problemMatcher": []
     }
   ]

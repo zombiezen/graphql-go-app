@@ -19,14 +19,11 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import QUERY from './AppQuery.graphql';
-
-interface QueryData {
-  greeting: string;
-}
+import { AppQuery } from './AppQuery.graphql';
+import { AppQueryData, AppQueryVariables } from '../generated/graphql';
 
 export const App: React.FC<{}> = _props => {
-  const { data } = useQuery<QueryData>(QUERY);
+  const { data } = useQuery<AppQueryData, AppQueryVariables>(AppQuery);
   return (
     <main className="App">
       <Switch>
