@@ -26,5 +26,5 @@ questions:
 
 tasks:
   - command: ["go-starter-replace"]
-  - command: ["sed", "-e", "/BEGIN TEMPLATE-ONLY/,/END TEMPLATE-ONLY/d", ".github/workflows/build.yml"]
+  - command: ["sed", "-i", "-e", "/BEGIN TEMPLATE-ONLY/,/END TEMPLATE-ONLY/d", ".github/workflows/build.yml"]
   - command: ["rm", ".starter.yml"]
