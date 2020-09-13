@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /client
+    schedule:
+      interval: monthly
+    allow:
+      - dependency-type: production
+  - package-ecosystem: golang
+    directory: /
+    schedule:
+      interval: weekly
